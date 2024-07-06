@@ -63,4 +63,68 @@ public class Library {
 
 
 //        library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
+
+    /**
+     * Adds a new member to the library.
+     * If there are already 5 members, prints library full.
+     *
+     * @param memberName   The name of the member to be added.
+     * @param borrowLimit  The borrowing limit for the member.
+     */
+    public void addMember(String member_name, int borrow_limit){
+        if(memberNumber >= 5){
+            System.out.println("Library is full, cannot add more members.");
+        }
+        else{
+            memberNumber += 1;
+            String new_card_id = "LC" + memberNumber;
+            LibraryCard new_card = new LibraryCard(new_card_id, borrow_limit);
+            Member new_member = new Member(member_name, new_card);
+            members[memberNumber - 1] = new_member; // minus one because array starts with zero.
+        }
+    }
+
+    /**
+     * @param card_id
+     * @return index in the members array. -1 if member not found.
+     */
+    private int memberNumberInArray(String card_id){
+        for(Member m: members){
+            if(m.getMemberCardIdentification() == card_id){
+                return memberNumber - 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Removes a member from the library.
+     * If member doesn't exist prints no such member.
+     * @param card_id
+     */
+    public void removeMember(String card_id){
+        int index = memberNumberInArray(card_id);
+        if(index == -1){
+            System.out.println("No such member exists.");
+        }
+        else{
+            members[index] = null;
+            memberNumber -= 1;
+        }
+    }
+
+    /**
+     * Prints member information.
+     * If member doesn't exist prints no such member.
+     * @param card_id
+     */
+    public void printMember(String card_id){
+        int index = memberNumberInArray(card_id);
+        if(index == -1){
+            System.out.println("No such member exists.");
+        }
+        else{
+            System.out.println(members[index].toString());
+        }
+    }
 }
