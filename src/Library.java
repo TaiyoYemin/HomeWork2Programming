@@ -28,12 +28,11 @@ public class Library {
      */
     public void addBook(String bookName, Genre bookGenre, String authorName, String bibliography) {
         Author author = checkAuthor(authorName, bibliography); //Checks if author exists on any other books.
-        int totalBooksNumber = this.bookNumber - this.removedBookNumber; //Counts the existing number of books in the library (Including the rented).
-        if (totalBooksNumber < MAX_BOOK_NUMBER) {
+        if (this.bookNumber < MAX_BOOK_NUMBER) {
             //Looks for a place to put the book in the library
             for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
                 if (libraryBooks[i] == null) {
-                    libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString(++this.bookNumber));
+                    libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString((++this.bookNumber) + this.removedBookNumber));
                     break;
                 }
             }
@@ -50,7 +49,7 @@ public class Library {
      * @param bibliography
      * @return
      */
-    public Author checkAuthor(String author, String bibliography) {
+    private Author checkAuthor(String author, String bibliography) {
         Author tempAuthor = new Author(author, bibliography);
         //create a function that look up if the author exists
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
@@ -67,6 +66,7 @@ public class Library {
             if ((this.libraryBooks[i] != null)) {
                 if ((!(libraryBooks[i].isBorrowed())) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
                     this.libraryBooks[i] = null;
+                    this.bookNumber--;
                     this.removedBookNumber++;
                 }
             }
@@ -142,7 +142,7 @@ public class Library {
         if (index == -1) {
             System.out.println("No such member exists.");
         } else {
-            System.out.println(libraryMembers[index].toString());
+            libraryMembers[index].printMemberBooks();
         }
     }
 
