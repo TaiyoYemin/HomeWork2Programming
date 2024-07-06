@@ -4,14 +4,13 @@ public class Book {
     private Genre genre;
     final String bookIdentification;
 
-    public Book(String title, Author author, Genre genre) {
+    public Book(String title, Author author, Genre genre, String bookIdentification) {
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.bookIdentification = bookIdentification;
 
     }
-
     public String bookAuthor(){
         return author.getName();
     }
