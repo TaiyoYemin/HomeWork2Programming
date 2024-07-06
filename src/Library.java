@@ -23,11 +23,11 @@ public class Library {
         Author tempAuthor = new Author(author, bibiliography);
         //create a function that look up if the author exists
         for(int i = 0; i < 20; i++){
-            if (this.libraryBooks[i].getAuthor().isEqual(tempAuthor)) {
+            if ((this.libraryBooks[i].getAuthor() !=null) &&(this.libraryBooks[i].getAuthor().isEqual(tempAuthor))) {
                 return this.libraryBooks[i].getAuthor();
             }
         }
-        //in case he does we return the author in case he is not we create a new author and return
+        //in author does not exist we return the new author
         return tempAuthor;
     }
 
