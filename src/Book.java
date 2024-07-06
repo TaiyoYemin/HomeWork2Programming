@@ -15,6 +15,9 @@ public class Book {
     public Author getAuthor() {
         return author;
     }
+    public String getBookIdentification(){
+        return bookIdentification;
+    }
 
     public boolean isEqual(String bookName, Genre bookGenre, String authorName, String bibliography){
         return (this.bookName.equals(bookName) &&
