@@ -7,7 +7,6 @@ public class Library {
     private int removedBookNumber = 0;
     private int memberNumber = 0;
 
-
     public Library(String libraryName) {
         this.libraryName = libraryName;
     }
@@ -77,7 +76,7 @@ public class Library {
         }
         else{
             memberNumber += 1;
-            String new_card_id = "LC" + Integer.toString(memberNumber) ;
+            String new_card_id = "LC" + memberNumber;
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
             libraryMembers[memberNumber - 1] = new_member; // minus one because array starts with zero.
@@ -90,7 +89,7 @@ public class Library {
      */
     private int memberNumberInArray(String cardID){
         for(int i = 0; i < MAX_MEMBER_NUMBER; i++){
-            if(libraryMembers[i].getMemberCardIdentification().equals(cardID)){
+            if(libraryMembers[i].getMemberCardIdentification() == cardID){
                 return i;
             }
         }
@@ -146,6 +145,8 @@ public class Library {
         else if(card_index == -1){
             System.out.println("No such member exists.");
         }
+        else if(libraryBooks[book_index].isBorrowed()){
+            System.out.println("The book is already checked-out.");
+        }
     }
-
 }
