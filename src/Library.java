@@ -89,7 +89,7 @@ public class Library {
      */
     private int memberNumberInArray(String cardID){
         for(int i = 0; i < MAX_MEMBER_NUMBER; i++){
-            if(libraryMembers[i].getMemberCardIdentification() == cardID){
+            if(libraryMembers[i].getMemberCardIdentification().equals(cardID)){
                 return i;
             }
         }
