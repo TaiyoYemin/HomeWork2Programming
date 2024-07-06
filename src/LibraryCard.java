@@ -6,4 +6,8 @@ public class LibraryCard {
         this.identification = identification;
         this.borrowLimit = borrowLimit;
     }
+
+    public String getIdentification() {
+        return this.identification;
+    }
 }
