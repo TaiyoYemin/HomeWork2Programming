@@ -3,7 +3,9 @@ public class Library {
     private Book[] libraryBooks = new Book[20];
     private Member[] members = new Member[5];
     private int bookNumber = 0;
+    private int removedBookNumber = 0;
     private int memberNumber = 0;
+    final int MAXBOOKNUMBER = 20;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -11,8 +13,15 @@ public class Library {
 
     public void addBook(String bookName, genre bookGenre, String authorName, String bibliography) {
         Author author = checkAuthor(authorName, bibliography);
-        if (this.bookNumber < 20) {
-            libraryBooks[bookNumber] = new Book(bookName, bookGenre, author, "BN" + Integer.toString(++this.bookNumber));
+        int totalBooksNumber = this.bookNumber-this.removedBookNumber;
+        if (totalBooksNumber < MAXBOOKNUMBER) {
+            for (int i = 0; i < MAXBOOKNUMBER; i++) {
+                if(libraryBooks[i] == null){
+                    libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString(++this.bookNumber));
+                    break;
+                }
+            }
+
         }
         else{
             System.out.println("Library is full, cannot add more books.");
@@ -30,6 +39,17 @@ public class Library {
         }
         //in author does not exist we return the new author
         return tempAuthor;
+    }
+
+    public void removeBook(String bookName, genre bookGenre, String authorName, String bibliography){
+        for(int i = 0; i < 20; i++){
+            if ((this.libraryBooks[i]!=null)) {
+                if((!(libraryBooks[i].isRented()))&&libraryBooks[i].isEqual(bookName,bookGenre,authorName,bibliography)){
+                    this.libraryBooks[i] = null;
+                    this.removedBookNumber++;
+                }
+            }
+        }
     }
 
 
