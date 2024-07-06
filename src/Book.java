@@ -19,6 +19,7 @@ public class Book {
         return bookIdentification;
     }
 
+
     public boolean isEqual(String bookName, Genre bookGenre, String authorName, String bibliography){
         return (this.bookName.equals(bookName) &&
                 this.genre.equals(bookGenre)&&
