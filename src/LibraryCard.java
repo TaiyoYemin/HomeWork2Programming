@@ -10,4 +10,8 @@ public class LibraryCard {
     public String getIdentification() {
         return this.identification;
     }
+    public int getBorrowLimit() {
+        return this.borrowLimit;
+    }
+
 }
