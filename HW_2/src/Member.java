@@ -1,4 +1,9 @@
 public class Member {
-    private String name;
-    private LibraryCard card;
+    String memberName;
+    private LibraryCard libraryCard;
+
+    public Member(String memberName, LibraryCard libraryCard) {
+        this.memberName = memberName;
+        this.libraryCard = libraryCard;
+    }
 }

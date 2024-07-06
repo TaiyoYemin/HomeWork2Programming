@@ -1,24 +1,31 @@
 public class Library {
-    private Book[] books = new Book[20];
+    private String libraryName;
+    private Book[] libraryBooks = new Book[20];
     private Member[] members = new Member[5];
-    private String lib_name;
+    private int bookNumber = 0;
 
-    public Library(String lib_name) {
-        this.lib_name = lib_name;
+    public Library(String libraryName) {
+        this.libraryName = libraryName;
     }
 
     private boolean addAuthor(String author_name){
-        for(Book book: books){
+        for(Book book: libraryBooks){
             if(book.bookAuthor() == author_name)
                 return false;
         }
         return true;
     }
 
-    public void addBook(String title, Genre genre, String author, String biography) {
-        boolean add_author = addAuthor(author);
+    public void addBook(String title, Genre bookGenre, String author, String biography) {
+        if(bookNumber >= 20) {
+            System.out.println("Library is full, cannot add more books.");
+        }
+        else {
+            boolean add_author = addAuthor(author);
 
-        Book new_book = new Book(title, new Author(author,biography) ,genre);
+        }
+
+
 
     }
 

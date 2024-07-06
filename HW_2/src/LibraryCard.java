@@ -1,5 +1,10 @@
 public class LibraryCard {
-    private String id;
-    private int max_borrow;
+    final String identification;
+    final int borrowLimit;
     private Book[] books;
+
+    public LibraryCard(String identification, int borrowLimit) {
+        this.identification = identification;
+        this.borrowLimit = borrowLimit;
+    }
 }

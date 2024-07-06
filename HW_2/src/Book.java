@@ -2,7 +2,7 @@ public class Book {
     private String title;
     private Author author;
     private Genre genre;
-    private String identifier;
+    final String identifier;
 
     public Book(String title, Author author, Genre genre) {
         this.title = title;
@@ -17,5 +17,9 @@ public class Book {
 
     private String generateID() {
         return "";
+    }
+
+    public void printBook(){
+        System.out.println("Title: "+this.title+", Genre: "+this.genre+", Author: "+this.author.getName());
     }
 }
