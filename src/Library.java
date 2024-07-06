@@ -50,15 +50,14 @@ public class Library {
      * @return
      */
     private Author checkAuthor(String author, String bibliography) {
-        Author tempAuthor = new Author(author, bibliography);
         //create a function that look up if the author exists
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
-            if ((this.libraryBooks[i] != null) && (this.libraryBooks[i].getAuthor().isEqual(tempAuthor))) {
+            if ((this.libraryBooks[i] != null) && (this.libraryBooks[i].getAuthor().isEqual(author, bibliography))) {
                 return this.libraryBooks[i].getAuthor();
             }
         }
         //if author does not exist we return the new author
-        return tempAuthor;
+        return new Author(author, bibliography);
     }
 
     public void removeBook(String bookName, Genre bookGenre, String authorName, String bibliography) {
