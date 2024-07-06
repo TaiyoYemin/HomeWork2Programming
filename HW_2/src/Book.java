@@ -8,16 +8,12 @@ public class Book {
         this.title = title;
         this.author = author;
         this.genre = genre;
-        this.identifier = generateID();
+        this.bookIdentification = bookIdentification;
 
     }
 
     public String bookAuthor(){
         return author.getName();
-    }
-
-    private String generateID() {
-        return "";
     }
 
     public void printBook(){
