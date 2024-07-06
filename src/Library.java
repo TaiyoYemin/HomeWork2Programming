@@ -171,18 +171,21 @@ public class Library {
         }
         else{
             //If the member reaches the limit the func will print reached limit and won't add the book.
-            libraryMembers[card_index].addBorrowedBook(bookID);
+            libraryMembers[card_index].addBorrowedBook(libraryBooks[book_index]);
             libraryBooks[book_index].borrowBook();
         }
     }
 
     public void returnBook(String bookID, String cardID){
+        int book_index = bookNumberInArray(bookID);
         int card_index = memberNumberInArray(cardID);
         if(card_index == -1){
             System.out.println("No such member exists.");
         }
         else{
-            libraryMembers[card_index].removeBorrowedBook(bookID);
+            //If member don't have this book print cannot return.
+            libraryMembers[card_index].removeBorrowedBook(libraryBooks[book_index]);
+            libraryBooks[card_index].returnBook();
         }
     }
 }

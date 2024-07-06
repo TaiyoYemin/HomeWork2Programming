@@ -2,49 +2,49 @@ public class Member {
     final String memberName;
     final LibraryCard libraryCard;
     private int borrowedBooks = 0;
-    private String [] bookIDs;
+    private Book[] memberBooks;
 
     public Member(String memberName, LibraryCard libraryCard) {
         this.memberName = memberName;
         this.libraryCard = libraryCard;
-        bookIDs = new String[libraryCard.getBorrowLimit()];
+        memberBooks = new Book[libraryCard.getBorrowLimit()];
     }
 
     public String getMemberCardIdentification(){
         return this.libraryCard.getIdentification();
     }
 
-    public void addBorrowedBook(String bookID) {
+    public void addBorrowedBook(Book book) {
         if(borrowedBooks >= libraryCard.borrowLimit){
             System.out.println("The member reached the limit.");
         }
         else {
             this.borrowedBooks++;
             // Adding the book to the array.
-            for(int i = 0; i < bookIDs.length; i++){
-                if(bookIDs[i] == null){
-                    bookIDs[i] = bookID;
+            for(int i = 0; i < memberBooks.length; i++){
+                if(memberBooks[i] == null){
+                    memberBooks[i] = book;
                 }
             }
         }
     }
 
-    private int findBookByID(String bookID) {
-        for(int i = 0; i < bookIDs.length; i++){
-            if(bookID.equals(bookIDs[i])){
+    private int findBook(Book book) {
+        for(int i = 0; i < memberBooks.length; i++){
+            if(memberBooks[i] == book){
                 return i;
             }
         }
         return -1;
     }
 
-    public void removeBorrowedBook(String bookID) {
-        int book_index = findBookByID(bookID);
+    public void removeBorrowedBook(Book book) {
+        int book_index = findBook(book);
         if(book_index == -1){
             System.out.println("Member cannot return the book.");
         }
         else{
-            bookIDs[book_index] = null;
+            memberBooks[book_index] = null;
             borrowedBooks--;
         }
     }
