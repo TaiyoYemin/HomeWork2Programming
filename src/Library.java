@@ -131,7 +131,7 @@ public class Library {
 
     private int bookNumberInArray(String bookID){
         for(int i = 0; i < MAX_BOOK_NUMBER; i++){
-            if(libraryBooks[i].getBookIdentification().equals(bookID)){
+            if(libraryBooks[i] != null && libraryBooks[i].getBookIdentification().equals(bookID)){
                 return i;
             }
         }
@@ -157,13 +157,12 @@ public class Library {
     }
 
     public void returnBook(String bookID, String cardID){
-        int book_index = bookNumberInArray(bookID);
         int card_index = memberNumberInArray(cardID);
         if(card_index == -1){
             System.out.println("No such member exists.");
         }
         else{
-
+            libraryMembers[card_index].removeBorrowedBook(bookID);
         }
     }
 }
