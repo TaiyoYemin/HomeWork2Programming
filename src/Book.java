@@ -11,6 +11,10 @@ public class Book {
         this.bookIdentification = bookIdentification;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
     public void printBook(){
         System.out.println("Title: "+this.bookName+", Genre: "+this.genre+", Author: "+this.author.authorName);
     }

@@ -1,5 +1,5 @@
 public class Library {
-    private String libraryName;
+    private final String libraryName;
     private Book[] libraryBooks = new Book[20];
     private Member[] members = new Member[5];
     private int bookNumber = 0;
@@ -19,11 +19,19 @@ public class Library {
 
     }
 
-    public static Author checkAuthor(String author, String bibiliography) {
-        return new Author(author, bibiliography);
+    public Author checkAuthor(String author, String bibiliography) {
+        Author tempAuthor = new Author(author, bibiliography);
         //create a function that look up if the author exists
+        for(int i = 0; i < 20; i++){
+            if (this.libraryBooks[i].getAuthor().isEqual(tempAuthor)) {
+                return this.libraryBooks[i].getAuthor();
+            }
+        }
         //in case he does we return the author in case he is not we create a new author and return
+        return tempAuthor;
     }
+
+
 
 
 //        library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
