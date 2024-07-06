@@ -1,11 +1,11 @@
 public class Book {
     final String bookName;
     final String bookIdentification;
-    final genre genre;
+    final Genre genre;
     final Author author;
-    private boolean isRented = false;
+    private boolean isBorrowed = false;
 
-    public Book(String name, genre genre,Author author, String bookIdentification) {
+    public Book(String name, Genre genre,Author author, String bookIdentification) {
         this.bookName = name;
         this.genre = genre;
         this.author = author;
@@ -16,14 +16,14 @@ public class Book {
         return author;
     }
 
-    public boolean isEqual(String bookName, genre bookGenre, String authorName, String bibliography){
+    public boolean isEqual(String bookName, Genre bookGenre, String authorName, String bibliography){
         return (this.bookName.equals(bookName) &&
                 this.genre.equals(bookGenre)&&
                 (this.author.isEqual(authorName, bibliography)));
     }
 
-    public boolean isRented(){
-        return isRented;
+    public boolean isBorrowed(){
+        return isBorrowed;
     }
 
     public void printBook(){
