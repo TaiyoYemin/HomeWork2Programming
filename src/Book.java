@@ -20,7 +20,15 @@ public class Book {
         return bookIdentification;
     }
 
-
+    /**
+     * This method checks whether 2 books are the same by name,genre,author.
+     *
+     * @param bookName
+     * @param bookGenre
+     * @param authorName
+     * @param bibliography
+     * @return true if the books are the same, false otherwise.
+     */
     public boolean isEqual(String bookName, Genre bookGenre, String authorName, String bibliography) {
         return (this.bookName.equals(bookName) &&
                 this.genre.equals(bookGenre) &&
