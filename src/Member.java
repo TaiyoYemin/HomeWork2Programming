@@ -20,10 +20,34 @@ public class Member {
         }
         else {
             this.borrowedBooks++;
-            bookIDs[borrowedBooks] = bookID;
+            // Adding the book to the array.
+            for(int i = 0; i < bookIDs.length; i++){
+                if(bookIDs[i] == null){
+                    bookIDs[i] = bookID;
+                }
+            }
         }
     }
 
+    private int findBookByID(String bookID) {
+        for(int i = 0; i < bookIDs.length; i++){
+            if(bookID.equals(bookIDs[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void removeBorrowedBook(String bookID) {
+        int book_index = findBookByID(bookID);
+        if(book_index == -1){
+            System.out.println("Member cannot return the book.");
+        }
+        else{
+            bookIDs[book_index] = null;
+            borrowedBooks--;
+        }
+    }
 
     public String toString(){
         return "Name: " + this.memberName + ", Checked-out books: " + this.borrowedBooks;
