@@ -1,9 +1,9 @@
-public class LibararyCard {
-    String identification;
-    private int rentLimit;
+public class LibraryCard {
+    final String identification;
+    final int borrowLimit;
 
-    public LibararyCard(String identification, int rentLimit) {
+    public LibraryCard(String identification, int borrowLimit) {
         this.identification = identification;
-        this.rentLimit = rentLimit;
+        this.borrowLimit = borrowLimit;
     }
 }

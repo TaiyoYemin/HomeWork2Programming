@@ -3,6 +3,7 @@ public class Library {
     private Book[] libraryBooks = new Book[20];
     private Member[] members = new Member[5];
     private int bookNumber = 0;
+    private int memberNumber = 0;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;

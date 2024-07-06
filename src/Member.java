@@ -1,8 +1,8 @@
 public class Member {
-    String memberName;
-    private LibararyCard libraryCard;
+    final String memberName;
+    final LibraryCard libraryCard;
 
-    public Member(String memberName, LibararyCard libraryCard) {
+    public Member(String memberName, LibraryCard libraryCard) {
         this.memberName = memberName;
         this.libraryCard = libraryCard;
     }

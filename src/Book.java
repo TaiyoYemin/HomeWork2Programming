@@ -1,8 +1,8 @@
 public class Book {
-    String bookName;
-    String bookIdentification;
-    genre genre;
-    Author author;
+    final String bookName;
+    final String bookIdentification;
+    final genre genre;
+    final Author author;
 
     public Book(String name, genre genre,Author author, String bookIdentification) {
         this.bookName = name;
