@@ -6,6 +6,7 @@ public class Library {
     private int bookNumber = 0;
     private int removedBookNumber = 0;
     private int memberNumber = 0;
+    private int removedMemberNumber = 0;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -75,8 +76,8 @@ public class Library {
             System.out.println("Library is full, cannot add more members.");
         }
         else{
-            memberNumber += 1;
-            String new_card_id = "LC" + memberNumber;
+            memberNumber++;
+            String new_card_id = "LC" + Integer.toString(memberNumber + removedMemberNumber);
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
             libraryMembers[memberNumber - 1] = new_member; // minus one because array starts with zero.
@@ -108,7 +109,8 @@ public class Library {
         }
         else{
             libraryMembers[index] = null;
-            memberNumber -= 1;
+            memberNumber--;
+            removedMemberNumber++;
         }
     }
 
@@ -129,7 +131,7 @@ public class Library {
 
     private int bookNumberInArray(String bookID){
         for(int i = 0; i < MAX_BOOK_NUMBER; i++){
-            if(libraryBooks[i].getBookIdentification() == bookID){
+            if(libraryBooks[i].getBookIdentification().equals(bookID)){
                 return i;
             }
         }
@@ -147,6 +149,21 @@ public class Library {
         }
         else if(libraryBooks[book_index].isBorrowed()){
             System.out.println("The book is already checked-out.");
+        }
+        else{
+            //If the member reaches the limit the func will print reached limit and won't add the book.
+            libraryMembers[card_index].addBorrowedBook(bookID);
+        }
+    }
+
+    public void returnBook(String bookID, String cardID){
+        int book_index = bookNumberInArray(bookID);
+        int card_index = memberNumberInArray(cardID);
+        if(card_index == -1){
+            System.out.println("No such member exists.");
+        }
+        else{
+
         }
     }
 }
