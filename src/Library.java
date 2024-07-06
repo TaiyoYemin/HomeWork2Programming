@@ -1,11 +1,11 @@
 public class Library {
     private final String libraryName;
-    private Book[] libraryBooks = new Book[20];
-    private Member[] libraryMembers = new Member[5];
+    final int MAX_BOOK_NUMBER = 20 , MAX_MEMBER_NUMBER = 5;
+    private Book[] libraryBooks = new Book[MAX_BOOK_NUMBER];
+    private Member[] libraryMembers = new Member[MAX_MEMBER_NUMBER];
     private int bookNumber = 0;
     private int removedBookNumber = 0;
     private int memberNumber = 0;
-    final int MAX_BOOK_NUMBER = 20 , MAX_MEMBER_NUMBER = 5;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -144,6 +144,9 @@ public class Library {
         }
         else if(card_index == -1){
             System.out.println("No such member exists.");
+        }
+        else if(libraryBooks[book_index].isBorrowed()){
+            System.out.println("The book is already checked-out.");
         }
     }
 }
