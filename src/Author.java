@@ -7,6 +7,12 @@ public class Author {
         this.bibliography = bibliography;
     }
 
+    /**
+     * This method checks whether 2 books are the same by comparing each of the properties of the object.
+     *
+     * @param other
+     * @return
+     */
     public boolean isEqual(Author other) {
         return this.authorName.equals(other.authorName) && (this.bibliography.equals(other.bibliography));
     }

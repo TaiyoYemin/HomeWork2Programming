@@ -4,6 +4,7 @@ public class Member {
     private int borrowedBooks = 0;
     private Book[] memberBooks;
 
+
     public Member(String memberName, LibraryCard libraryCard) {
         this.memberName = memberName;
         this.libraryCard = libraryCard;
@@ -14,11 +15,16 @@ public class Member {
         return this.libraryCard.getIdentification();
     }
 
+    /**
+     * This method is used in the library class when a member wants to borrow a book.
+     * It checks first whether the member can borrow more books.
+     *
+     * @param book
+     */
     public void addBorrowedBook(Book book) {
         if (borrowedBooks >= libraryCard.borrowLimit) {
             System.out.println("The member reached the limit.");
         } else {
-            this.borrowedBooks++;
             // Adding the book to the array.
             for (int i = 0; i < memberBooks.length; i++) {
                 if (memberBooks[i] == null) {
@@ -26,9 +32,17 @@ public class Member {
                     break;
                 }
             }
+            this.borrowedBooks++;
         }
     }
 
+    /**
+     * This method gives back the index of a book if it's there.
+     * It is used to check if the member actually borrowed the book.
+     *
+     * @param book
+     * @return int index in the book array. -1 if not found.
+     */
     private int findBook(Book book) {
         for (int i = 0; i < memberBooks.length; i++) {
             if (memberBooks[i] == book) {
@@ -38,13 +52,19 @@ public class Member {
         return -1;
     }
 
+    /**
+     * This method removes a borrowed book when the member returns it.
+     * It first checks whether the member actually has this book.
+     *
+     * @param book
+     */
     public void removeBorrowedBook(Book book) {
         int book_index = findBook(book);
         if (book_index == -1) {
             System.out.println("Member cannot return the book.");
         } else {
             memberBooks[book_index] = null;
-            borrowedBooks--;
+            this.borrowedBooks--;
         }
     }
 
@@ -56,5 +76,4 @@ public class Member {
             }
         }
     }
-
 }

@@ -1,3 +1,10 @@
+/**
+ * HomeWork2
+ *
+ * @author Amir Cohen -322989807 and Taiyo Yemin -213836299
+ * @version 06/07/2024
+ */
+
 public class Library {
     private final String libraryName;
     final int MAX_BOOK_NUMBER = 20, MAX_MEMBER_NUMBER = 5;
@@ -101,8 +108,10 @@ public class Library {
     }
 
     /**
+     * returns the index in the libraryMember array by cardID.
+     *
      * @param cardID
-     * @return index in the members array. -1 if member not found.
+     * @return int index in the array. -1 if not found.
      */
     private int memberNumberInArray(String cardID) {
         for (int i = 0; i < MAX_MEMBER_NUMBER; i++) {
@@ -145,6 +154,12 @@ public class Library {
         }
     }
 
+    /**
+     * returns the index in the libraryBook array by bookID.
+     *
+     * @param bookID
+     * @return int index in the array. -1 if not found.
+     */
     private int bookNumberInArray(String bookID) {
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if (libraryBooks[i] != null && libraryBooks[i].getBookIdentification().equals(bookID)) {
@@ -154,6 +169,14 @@ public class Library {
         return -1;
     }
 
+
+    /**
+     * This method is for a member who wants to borrow a book.
+     * The method checks whether the member is valid and the book is valid before borrowing a book.
+     *
+     * @param bookID
+     * @param cardID
+     */
     public void checkOutBook(String bookID, String cardID) {
         int book_index = bookNumberInArray(bookID);
         int card_index = memberNumberInArray(cardID);
@@ -170,6 +193,13 @@ public class Library {
         }
     }
 
+    /**
+     * This method is for a member who wants to return a book he borrowed.
+     * The method checks whether the member is valid and can return the book.
+     *
+     * @param bookID
+     * @param cardID
+     */
     public void returnBook(String bookID, String cardID) {
         int book_index = bookNumberInArray(bookID);
         int card_index = memberNumberInArray(cardID);
