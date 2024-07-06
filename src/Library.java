@@ -1,11 +1,12 @@
 public class Library {
     private final String libraryName;
     private Book[] libraryBooks = new Book[20];
-    private Member[] members = new Member[5];
+    private Member[] libraryMembers = new Member[5];
     private int bookNumber = 0;
     private int removedBookNumber = 0;
     private int memberNumber = 0;
     final int MAXBOOKNUMBER = 20;
+    final int MAXMEMBERNUMBER = 5;
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -42,8 +43,10 @@ public class Library {
     }
 
     public void removeBook(String bookName, Genre bookGenre, String authorName, String bibliography){
+        //The functions check for existing books in the library.
         for(int i = 0; i < MAXBOOKNUMBER; i++){
             if ((this.libraryBooks[i]!=null)) {
+                // If we find a book that isn't burrowed and matches the book we want to remove description we delete it.
                 if((!(libraryBooks[i].isBorrowed()))&&libraryBooks[i].isEqual(bookName,bookGenre,authorName,bibliography)){
                     this.libraryBooks[i] = null;
                     this.removedBookNumber++;
@@ -51,8 +54,10 @@ public class Library {
             }
         }
     }
+
     public void printBooks(){
         for(int i = 0; i < MAXBOOKNUMBER; i++){
+            //looks for books that aren't burrowed in the library and prints them.
             if((libraryBooks[i] != null)&&(!(libraryBooks[i].isBorrowed()))){
                 libraryBooks[i].printBook();
             }
@@ -70,27 +75,27 @@ public class Library {
      * @param memberName   The name of the member to be added.
      * @param borrowLimit  The borrowing limit for the member.
      */
-    public void addMember(String member_name, int borrow_limit){
+    public void addMember(String memberName, int borrowLimit){
         if(memberNumber >= 5){
             System.out.println("Library is full, cannot add more members.");
         }
         else{
             memberNumber += 1;
             String new_card_id = "LC" + memberNumber;
-            LibraryCard new_card = new LibraryCard(new_card_id, borrow_limit);
-            Member new_member = new Member(member_name, new_card);
-            members[memberNumber - 1] = new_member; // minus one because array starts with zero.
+            LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
+            Member new_member = new Member(memberName, new_card);
+            libraryMembers[memberNumber - 1] = new_member; // minus one because array starts with zero.
         }
     }
 
     /**
-     * @param card_id
+     * @param cardId
      * @return index in the members array. -1 if member not found.
      */
     private int memberNumberInArray(String card_id){
-        for(Member m: members){
-            if(m.getMemberCardIdentification() == card_id){
-                return memberNumber - 1;
+        for(int i = 0; i < MAXMEMBERNUMBER; i++){
+            if(libraryMembers[i].getMemberCardIdentification() == card_id){
+                return i;
             }
         }
         return -1;
@@ -99,15 +104,15 @@ public class Library {
     /**
      * Removes a member from the library.
      * If member doesn't exist prints no such member.
-     * @param card_id
+     * @param cardId
      */
-    public void removeMember(String card_id){
-        int index = memberNumberInArray(card_id);
+    public void removeMember(String cardId){
+        int index = memberNumberInArray(cardId);
         if(index == -1){
             System.out.println("No such member exists.");
         }
         else{
-            members[index] = null;
+            libraryMembers[index] = null;
             memberNumber -= 1;
         }
     }
@@ -115,15 +120,15 @@ public class Library {
     /**
      * Prints member information.
      * If member doesn't exist prints no such member.
-     * @param card_id
+     * @param cardId
      */
-    public void printMember(String card_id){
-        int index = memberNumberInArray(card_id);
+    public void printMember(String cardId){
+        int index = memberNumberInArray(cardId);
         if(index == -1){
             System.out.println("No such member exists.");
         }
         else{
-            System.out.println(members[index].toString());
+            System.out.println(libraryMembers[index].toString());
         }
     }
 }
