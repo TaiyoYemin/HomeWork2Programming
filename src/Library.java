@@ -8,14 +8,27 @@ public class Library {
     private int memberNumber = 0;
     private int removedMemberNumber = 0;
 
+
+    /**
+     * Constructs the library
+     * @param libraryName
+     */
     public Library(String libraryName) {
         this.libraryName = libraryName;
     }
 
+    /**
+     * Add a book to a library
+     * @param bookName The book name
+     * @param bookGenre The book genre
+     * @param authorName The author's name
+     * @param bibliography The author's bibliography
+     */
     public void addBook(String bookName, Genre bookGenre, String authorName, String bibliography) {
-        Author author = checkAuthor(authorName, bibliography);
-        int totalBooksNumber = this.bookNumber - this.removedBookNumber;
+        Author author = checkAuthor(authorName, bibliography); //Checks if author exists on any other books.
+        int totalBooksNumber = this.bookNumber - this.removedBookNumber; //Counts the existing number of books in the library (Including the rented).
         if (totalBooksNumber < MAX_BOOK_NUMBER) {
+            //Looks for a place to put the book in the library
             for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
                 if(libraryBooks[i] == null){
                     libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString(++this.bookNumber));
@@ -30,6 +43,12 @@ public class Library {
 
     }
 
+    /**
+     *
+     * @param author
+     * @param bibliography
+     * @return
+     */
     public Author checkAuthor(String author, String bibliography) {
         Author tempAuthor = new Author(author, bibliography);
         //create a function that look up if the author exists
@@ -153,6 +172,7 @@ public class Library {
         else{
             //If the member reaches the limit the func will print reached limit and won't add the book.
             libraryMembers[card_index].addBorrowedBook(bookID);
+            libraryBooks[book_index].borrowBook();
         }
     }
 

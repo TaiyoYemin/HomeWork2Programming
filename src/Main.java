@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         Library library = new Library("Technion");
         library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
-        library.removeBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addBook("Harry Potter", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addMember("Amir",1);
@@ -13,7 +12,9 @@ public class Main {
         library.addMember("Amir",1);
 
         library.printBooks();
-
+        library.checkOutBook("BN1","LC1" );
+        System.out.println();
+        library.printBooks();
         library.printMember("LC1");
         library.printMember("LC2");
     }

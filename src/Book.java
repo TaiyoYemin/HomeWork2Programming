@@ -29,6 +29,15 @@ public class Book {
         return isBorrowed;
     }
 
+    public void borrowBook(){
+        this.isBorrowed = true;
+    }
+
+
+    public void returnBook(){
+        this.isBorrowed = false;
+    }
+
     public void printBook(){
         System.out.println("Title: "+this.bookName+", Genre: "+this.genre+", Author: "+this.author.authorName);
     }
