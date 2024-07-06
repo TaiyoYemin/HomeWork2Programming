@@ -9,16 +9,16 @@ public class Main {
         library.addMember("Amir",3);
 
 
-        library.printBooks();
+        //library.printBooks();
         library.checkOutBook("BN1","LC1" );
-        library.checkOutBook("BN2","LC1" );
-        System.out.println();
-        library.printBooks();
+        //library.checkOutBook("BN1","LC1" );
+        //System.out.println();
+        //library.printBooks();
         //library.printMember("LC1");
-        System.out.println();
-        library.returnBook("BN1","LC1");
-        library.printBooks();
+        //System.out.println();
+        library.returnBook("BN1","LC2");
+        //library.printBooks();
         //library.printMember("LC1");
-        library.printMember("LC2");
+        //library.printMember("LC2");
     }
 }
