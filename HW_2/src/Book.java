@@ -2,7 +2,7 @@ public class Book {
     private String title;
     private Author author;
     private Genre genre;
-    final String identifier;
+    final String bookIdentification;
 
     public Book(String title, Author author, Genre genre) {
         this.title = title;
