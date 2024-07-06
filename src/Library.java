@@ -1,11 +1,12 @@
 public class Library {
     private final String libraryName;
-    private Book[] libraryBooks = new Book[20];
-    private Member[] libraryMembers = new Member[5];
+    final int MAX_BOOK_NUMBER = 20 , MAX_MEMBER_NUMBER = 5;
+    private Book[] libraryBooks = new Book[MAX_BOOK_NUMBER];
+    private Member[] libraryMembers = new Member[MAX_MEMBER_NUMBER];
     private int bookNumber = 0;
     private int removedBookNumber = 0;
     private int memberNumber = 0;
-    final int MAX_BOOK_NUMBER = 20 , MAX_MEMBER_NUMBER = 5;
+
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
@@ -76,7 +77,7 @@ public class Library {
         }
         else{
             memberNumber += 1;
-            String new_card_id = "LC" + memberNumber;
+            String new_card_id = "LC" + Integer.toString(memberNumber) ;
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
             libraryMembers[memberNumber - 1] = new_member; // minus one because array starts with zero.
@@ -89,7 +90,7 @@ public class Library {
      */
     private int memberNumberInArray(String cardID){
         for(int i = 0; i < MAX_MEMBER_NUMBER; i++){
-            if(libraryMembers[i].getMemberCardIdentification() == cardID){
+            if(libraryMembers[i].getMemberCardIdentification().equals(cardID)){
                 return i;
             }
         }
@@ -146,4 +147,5 @@ public class Library {
             System.out.println("No such member exists.");
         }
     }
+
 }

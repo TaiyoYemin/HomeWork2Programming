@@ -6,7 +6,9 @@ public class Main {
         library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addBook("Harry Potter", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addMember("Amir",1);
-
+        library.removeMember("LC1");
+        library.addMember("Amir",1);
         library.printBooks();
+        library.printMember("LC1");
     }
 }

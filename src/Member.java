@@ -13,7 +13,7 @@ public class Member {
     }
 
     public String toString(){
-        return "Name: " + this.memberName + ", Checked-out books: " + this.borrowed_books;
+        return "Name: " + this.memberName + ", Checked-out books: " + Integer.toString(this.borrowed_books);
     }
 
 }
