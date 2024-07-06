@@ -42,12 +42,19 @@ public class Library {
     }
 
     public void removeBook(String bookName, genre bookGenre, String authorName, String bibliography){
-        for(int i = 0; i < 20; i++){
+        for(int i = 0; i < MAXBOOKNUMBER; i++){
             if ((this.libraryBooks[i]!=null)) {
                 if((!(libraryBooks[i].isRented()))&&libraryBooks[i].isEqual(bookName,bookGenre,authorName,bibliography)){
                     this.libraryBooks[i] = null;
                     this.removedBookNumber++;
                 }
+            }
+        }
+    }
+    public void printBooks(){
+        for(int i = 0; i < MAXBOOKNUMBER; i++){
+            if((libraryBooks[i] != null)&&(!(libraryBooks[i].isRented()))){
+                libraryBooks[i].printBook();
             }
         }
     }
