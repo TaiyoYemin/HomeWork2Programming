@@ -54,7 +54,7 @@ public class Library {
     /**
      * A private function that looks up if the same author exist in any of the books in the library.
      *
-     * @param author The author name we're looking for.
+     * @param author       The author name we're looking for.
      * @param bibliography the bibliography of the author we're looking for.
      * @return The author in existing book or a new author.
      */
