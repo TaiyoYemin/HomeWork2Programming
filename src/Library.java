@@ -52,9 +52,11 @@ public class Library {
 
 
     /**
-     * @param author
-     * @param bibliography
-     * @return
+     * A private function that looks up if the same author exist in any of the books in the library.
+     *
+     * @param author The author name we're looking for.
+     * @param bibliography the bibliography of the author we're looking for.
+     * @return The author in existing book or a new author.
      */
     private Author checkAuthor(String author, String bibliography) {
         //create a function that look up if the author exists
@@ -67,6 +69,14 @@ public class Library {
         return new Author(author, bibliography);
     }
 
+    /**
+     * Remove all books that has the described book name, genre and author from the library.
+     *
+     * @param bookName
+     * @param bookGenre
+     * @param authorName
+     * @param bibliography
+     */
     public void removeBook(String bookName, Genre bookGenre, String authorName, String bibliography) {
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if ((this.libraryBooks[i] != null)) {
@@ -79,6 +89,9 @@ public class Library {
         }
     }
 
+    /**
+     * Prints all the books in the library.
+     */
     public void printBooks() {
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if ((libraryBooks[i] != null) && (!(libraryBooks[i].isBorrowed()))) {

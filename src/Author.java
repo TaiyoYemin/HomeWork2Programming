@@ -8,15 +8,11 @@ public class Author {
     }
 
     /**
-     * This method checks whether 2 books are the same by comparing each of the properties of the object.
+     * This method checks whether 2 books are the same by comparing their author name and parameter.
      *
-     * @param other
+     * @param
      * @return
      */
-    public boolean isEqual(Author other) {
-        return this.authorName.equals(other.authorName) && (this.bibliography.equals(other.bibliography));
-    }
-
     public boolean isEqual(String authorName, String bibliography) {
         return this.authorName.equals(authorName) && (this.bibliography.equals(bibliography));
     }

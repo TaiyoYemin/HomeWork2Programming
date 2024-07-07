@@ -5,7 +5,7 @@ public class Main {
         Library library = new Library("Technion");
         library.addBook("Potter", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
         library.addBook("Harry Potter and the Sorcerer's Stone", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
-        library.addBook("Harry Potter", Genre.FANTASY, "J.K. Rowling", "British author, best known for the Harry Potter series.");
+        library.addBook("Harry Potter", Genre.FANTASY, "J.K. Rowlin", "British author, best known for the Harry Potter series.");
         library.addMember("Amir",3);
 
 
