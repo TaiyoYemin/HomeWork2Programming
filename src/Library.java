@@ -50,6 +50,21 @@ public class Library {
 
     }
 
+    /**
+     * Return the author of the specified book Identification
+     *
+     * @param bookID The wanted author book identification
+     * @return
+     */
+    public Author getAuthor(String bookID) {
+        for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
+            if (libraryBooks[i] != null) {
+                libraryBooks[i].bookIdentification.equals(bookID) ;
+                return libraryBooks[i].author;
+            }
+        }
+        return null;
+    }
 
     /**
      * A private function that looks up if the same author exist in any of the books in the library.
@@ -99,6 +114,7 @@ public class Library {
             }
         }
     }
+
 
 
     /**
