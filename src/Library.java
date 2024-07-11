@@ -58,7 +58,7 @@ public class Library {
      */
     public Author getAuthor(String bookID) {
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
-            if (libraryBooks[i] != null) {
+            if (libraryBooks[i] != null) {// looks through the the library for the wanted book ID
                 libraryBooks[i].bookIdentification.equals(bookID) ;
                 return libraryBooks[i].author;
             }
