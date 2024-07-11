@@ -20,20 +20,22 @@ public class Member {
      * It checks first whether the member can borrow more books.
      *
      * @param book
+     * @return true if the user can borrow a book.
      */
-    public void addBorrowedBook(Book book) {
+    public boolean addBorrowedBook(Book book) {
         if (borrowedBooks >= libraryCard.borrowLimit) {
-            System.out.println("The member reached the limit.");
+            return false;
         } else {
             // Adding the book to the array.
             for (int i = 0; i < memberBooks.length; i++) {
                 if (memberBooks[i] == null) {
                     memberBooks[i] = book;
-                    break;
+                    this.borrowedBooks++;
+                    return true;
                 }
             }
-            this.borrowedBooks++;
         }
+        return false;
     }
 
     /**
@@ -69,7 +71,7 @@ public class Member {
     }
 
     public void printMemberBooks() {
-        System.out.println("Name: " + this.memberName + ", Checked-out books: ");
+        System.out.println("Name: " + this.memberName + ", Checked-out books:");
         for (int i = 0; i < memberBooks.length; i++) {
             if (memberBooks[i] != null) {
                 memberBooks[i].printBook();

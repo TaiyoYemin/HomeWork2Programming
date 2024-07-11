@@ -105,9 +105,8 @@ public class Library {
                     this.bookNumber--;
                     this.removedBookNumber++;
                     flag = false;
-                }
-                else if ((libraryBooks[i].isBorrowed())&&libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)){
-                    System.out.println("The book "+libraryBooks[i].bookIdentification+" is rented");
+                } else if ((libraryBooks[i].isBorrowed()) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
+                    System.out.println("The book " + libraryBooks[i].bookIdentification + " is rented");
                     flag = false;
                 }
 
@@ -122,10 +121,15 @@ public class Library {
      * Prints all the books in the library.
      */
     public void printBooks() {
+        boolean noBooks = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if ((libraryBooks[i] != null) && (!(libraryBooks[i].isBorrowed()))) {
                 libraryBooks[i].printBook();
+                noBooks = false;
             }
+        }
+        if (noBooks) {
+            System.out.println("No books in the library currently.");
         }
     }
 
@@ -141,11 +145,11 @@ public class Library {
         if (memberNumber >= MAX_MEMBER_NUMBER) {
             System.out.println("Library is full, cannot add more members.");
         } else {
-            memberNumber++;
             String new_card_id = "LC" + Integer.toString(memberNumber + removedMemberNumber);
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
-            libraryMembers[memberNumber - 1] = new_member; // minus one because array starts with zero.
+            libraryMembers[memberNumber] = new_member;
+            memberNumber++; // adding one as the member has been added.
         }
     }
 
@@ -228,10 +232,10 @@ public class Library {
             System.out.println("No such member exists.");
         } else if (libraryBooks[book_index].isBorrowed()) {
             System.out.println("The book is already checked-out.");
-        } else {
-            //If the member reaches the limit the func will print reached limit and won't add the book.
-            libraryMembers[card_index].addBorrowedBook(libraryBooks[book_index]);
+        } else if (libraryMembers[card_index].addBorrowedBook(libraryBooks[book_index])) {
             libraryBooks[book_index].borrowBook();
+        } else {
+            System.out.println("The member reached the limit.");
         }
     }
 
