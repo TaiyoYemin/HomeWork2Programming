@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 /**
  * HomeWork2
  *
@@ -49,6 +51,7 @@ public class Library {
         }
 
     }
+
     /**
      * Return the author of the specified book Identification
      *
@@ -59,8 +62,8 @@ public class Library {
         boolean z = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {// looks through the the library for the wanted book ID
-               Author x = libraryBooks[i].author;
-               return x;
+                Author x = libraryBooks[i].author;
+                return x;
             }
         }
         z = false;
@@ -94,14 +97,26 @@ public class Library {
      * @param bibliography
      */
     public void removeBook(String bookName, Genre bookGenre, String authorName, String bibliography) {
+        boolean flag = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if ((this.libraryBooks[i] != null)) {
                 if ((!(libraryBooks[i].isBorrowed())) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
                     this.libraryBooks[i] = null;
                     this.bookNumber--;
                     this.removedBookNumber++;
+                    flag = false;
+                    break;
                 }
+                else if (libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)){
+                    System.out.println("The book is rented");
+                    flag = false;
+                    break;
+                }
+
             }
+        }
+        if (flag) {
+            System.out.println("No such book exists.");
         }
     }
 
@@ -115,7 +130,6 @@ public class Library {
             }
         }
     }
-
 
 
     /**
