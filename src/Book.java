@@ -47,7 +47,23 @@ public class Book {
         this.isBorrowed = false;
     }
 
+    /**
+     * Converts the genre enum to its corresponding string representation.
+     *
+     * @return a string representing the genre of the current object.
+     *         or "Unknown genre" if the genre is not recognized.
+     */
+    private String genreToString(){
+        switch (this.genre){
+            case DRAMA: return "Drama";
+            case FANTASY: return "Fantasy";
+            case HISTORY_FICTION: return "History Fiction";
+            case SCIENCE_FICTION: return "Science Fiction";
+            default:
+                return "Unknown genre";
+        }
+    }
     public void printBook() {
-        System.out.println("Title: " + this.bookName + ", Genre: " + this.genre + ", Author: " + this.author.authorName);
+        System.out.println("Title: " + this.bookName + ", Genre: " + genreToString() + ", Author: " + this.author.authorName);
     }
 }
