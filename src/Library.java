@@ -39,7 +39,7 @@ public class Library {
             //Looks for a place to put the book in the library
             for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
                 if (libraryBooks[i] == null) {
-                    libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString((++this.bookNumber) + this.removedBookNumber));
+                    libraryBooks[i] = new Book(bookName, bookGenre, author, "BN" + Integer.toString((this.bookNumber++) + this.removedBookNumber));
                     break;
                 }
             }
@@ -49,7 +49,6 @@ public class Library {
         }
 
     }
-
     /**
      * Return the author of the specified book Identification
      *
@@ -57,12 +56,14 @@ public class Library {
      * @return
      */
     public Author getAuthor(String bookID) {
+        boolean z = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
-            if (libraryBooks[i] != null) {// looks through the the library for the wanted book ID
-                libraryBooks[i].bookIdentification.equals(bookID) ;
-                return libraryBooks[i].author;
+            if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {// looks through the the library for the wanted book ID
+               Author x = libraryBooks[i].author;
+               return x;
             }
         }
+        z = false;
         return null;
     }
 
