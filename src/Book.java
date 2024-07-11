@@ -64,6 +64,6 @@ public class Book {
         }
     }
     public void printBook() {
-        System.out.println("Title: " + this.bookName + ", Genre: " + genreToString() + ", Author: " + this.author.authorName);
+        System.out.println("Title: " + this.bookName + ", Genre: " + genreToString() + ", Author: " + this.author.authorName+".");
     }
 }
