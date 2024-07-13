@@ -77,7 +77,8 @@ public class Member {
      */
     public void removeAllBorrowedBooks() {
         for (Book book : this.memberBooks) {
-            removeBorrowedBook(book);
+            if(book != null){
+            removeBorrowedBook(book);}
         }
     }
 
