@@ -105,9 +105,6 @@ public class Library {
                     this.bookNumber--;
                     this.removedBookNumber++;
                     flag = false;
-                } else if ((libraryBooks[i].isBorrowed()) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
-                    System.out.println("The book " + libraryBooks[i].bookIdentification + " is rented");
-                    flag = false;
                 }
 
             }
