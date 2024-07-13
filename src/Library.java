@@ -144,7 +144,13 @@ public class Library {
             String new_card_id = "LC" + Integer.toString(memberNumber + removedMemberNumber);
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
-            libraryMembers[memberNumber] = new_member;
+            // Searching where it is possible to add a member in the member array.
+            for (Member member : libraryMembers) {
+                if(member == null){
+                    member = new_member;
+                    break;
+                }
+            }
             memberNumber++; // adding one as the member has been added.
         }
     }
