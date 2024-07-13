@@ -145,9 +145,9 @@ public class Library {
             LibraryCard new_card = new LibraryCard(new_card_id, borrowLimit);
             Member new_member = new Member(memberName, new_card);
             // Searching where it is possible to add a member in the member array.
-            for (Member member : libraryMembers) {
-                if(member == null){
-                    member = new_member;
+            for(int i = 0; i < MAX_MEMBER_NUMBER; i++) {
+                if (libraryMembers[i] == null) {
+                    libraryMembers[i] = new_member;
                     break;
                 }
             }
