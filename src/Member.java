@@ -65,8 +65,19 @@ public class Member {
         if (book_index == -1) {
             System.out.println("Member cannot return the book.");
         } else {
+            memberBooks[book_index].returnBook();
             memberBooks[book_index] = null;
             this.borrowedBooks--;
+        }
+    }
+
+    /**
+     * This method is used when we remove a member.
+     * It calls the removeBorrowedBook method for each book in the array.
+     */
+    public void removeAllBorrowedBooks() {
+        for (Book book : this.memberBooks) {
+            removeBorrowedBook(book);
         }
     }
 

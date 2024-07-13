@@ -169,7 +169,7 @@ public class Library {
     }
 
     /**
-     * Removes a member from the library.
+     * Removes a member from the library and all of his borrowed books.
      * If member doesn't exist prints no such member.
      *
      * @param cardID
@@ -179,6 +179,7 @@ public class Library {
         if (index == -1) {
             System.out.println("No such member exists.");
         } else {
+            libraryMembers[index].removeAllBorrowedBooks();
             libraryMembers[index] = null;
             memberNumber--;
             removedMemberNumber++;
@@ -254,7 +255,6 @@ public class Library {
         } else {
             //If member don't have this book print cannot return.
             libraryMembers[card_index].removeBorrowedBook(libraryBooks[book_index]);
-            libraryBooks[card_index].returnBook();
         }
     }
 }
