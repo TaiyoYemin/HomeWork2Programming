@@ -72,13 +72,13 @@ public class Member {
     }
 
     /**
-     * This method is used when we remove a member.
-     * It calls the removeBorrowedBook method for each book in the array.
+     * This method is used when we remove a member. It returns all the borrowed books.
      */
     public void removeAllBorrowedBooks() {
         for (Book book : this.memberBooks) {
-            if(book != null){
-            removeBorrowedBook(book);}
+            if (book != null) {
+                book.returnBook();
+            }
         }
     }
 
