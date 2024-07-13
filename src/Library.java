@@ -49,7 +49,6 @@ public class Library {
         } else {
             System.out.println("Library is full, cannot add more books.");
         }
-
     }
 
     /**
@@ -60,7 +59,8 @@ public class Library {
      */
     public Author getAuthor(String bookID) {
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
-            if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {// looks through the the library for the wanted book ID
+            // looks through the the library for the wanted book ID
+            if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {
                 Author x = libraryBooks[i].author;
                 return x;
             }
