@@ -99,7 +99,9 @@ public class Library {
         boolean flag = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if ((this.libraryBooks[i] != null)) {
+                //looks for books in the library and checks if the book is not borrowed and matches the described book.
                 if ((!(libraryBooks[i].isBorrowed())) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
+                    //In case the describtion matches we remove the book.
                     this.libraryBooks[i] = null;
                     this.bookNumber--;
                     this.removedBookNumber++;
@@ -108,6 +110,7 @@ public class Library {
 
             }
         }
+        //in case we haven't found a book that matches the conditions in the library we inform the user.
         if (flag) {
             System.out.println("No such book exists.");
         }
