@@ -73,6 +73,7 @@ public class Main {
         library.addBook("Book 19", Genre.DRAMA, "John Doe", "Just a generic guy in a generic U.S. state.");
         library.addBook("Book 20", Genre.DRAMA, "John Doe", "Just a generic guy in a generic U.S. state.");
         library.addBook("Book 1", Genre.DRAMA, "John Doe", "Just a generic guy in a generic U.S. state.");
+        //library.addBook("Book 21", Genre.DRAMA, "John Doe", "Just a generic guy in a generic U.S. state.");
         library.printBooks();
 
         System.out.println(library.getAuthor("BN0"));
@@ -140,7 +141,10 @@ public class Main {
         library.checkOutBook("BN1", "LC0");
         library.checkOutBook("BN2", "LC0");
         library.checkOutBook("BN0", "LC0");
+        library.checkOutBook("BN0", "LC1");
 
+        library.returnBook("BN0","LC0");
+        library.returnBook("BN0","LC0");
         library.printMember("LC0");
         System.out.println("library:");
         library.printBooks();

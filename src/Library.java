@@ -59,16 +59,15 @@ public class Library {
      * @return
      */
     public Author getAuthor(String bookID) {
-        boolean z = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {// looks through the the library for the wanted book ID
                 Author x = libraryBooks[i].author;
                 return x;
             }
         }
-        z = false;
         return null;
     }
+
 
     /**
      * A private function that looks up if the same author exist in any of the books in the library.
@@ -104,9 +103,6 @@ public class Library {
                     this.libraryBooks[i] = null;
                     this.bookNumber--;
                     this.removedBookNumber++;
-                    flag = false;
-                } else if ((libraryBooks[i].isBorrowed()) && libraryBooks[i].isEqual(bookName, bookGenre, authorName, bibliography)) {
-                    System.out.println("The book " + libraryBooks[i].bookIdentification + " is rented");
                     flag = false;
                 }
 
