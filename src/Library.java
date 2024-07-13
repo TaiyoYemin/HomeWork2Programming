@@ -59,14 +59,12 @@ public class Library {
      * @return
      */
     public Author getAuthor(String bookID) {
-        boolean z = true;
         for (int i = 0; i < MAX_BOOK_NUMBER; i++) {
             if (libraryBooks[i] != null && libraryBooks[i].bookIdentification.equals(bookID)) {// looks through the the library for the wanted book ID
                 Author x = libraryBooks[i].author;
                 return x;
             }
         }
-        z = false;
         return null;
     }
 
