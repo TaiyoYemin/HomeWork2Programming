@@ -106,6 +106,7 @@ public class Library {
                     this.bookNumber--;
                     this.removedBookNumber++;
                     flag = false;
+                    break;
                 }
 
             }
